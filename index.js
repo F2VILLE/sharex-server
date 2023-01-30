@@ -6,6 +6,10 @@ const express = require("express"),
 
 const authtoken = process.env.AUTHTOKEN
 
+if (!fs.existsSync("./public/img")) {
+    fs.mkdirSync("./public/img", {recursive: true})
+}
+
 app.set("view engine", "pug")
 app.use("/", express.static("./public"))
 app.use(express.urlencoded({ extended: true }))
